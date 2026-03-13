@@ -14,16 +14,16 @@
 
 | Layer | Choice | Notes |
 |---|---|---|
-| Language | [TODO] | |
-| Frontend framework | [TODO] | |
-| Backend framework | [TODO] | |
-| Database | [TODO] | |
-| ORM / query layer | [TODO] | |
-| Auth | [TODO] | |
-| Hosting | [TODO] | |
-| CI/CD | [TODO] | |
+| Language | TypeScript | End-to-end default for frontend, backend, and scripts |
+| Frontend framework | Next.js (App Router) | Default web app framework |
+| Backend framework | Fastify | Service/API default |
+| Database | PostgreSQL | Primary relational datastore |
+| ORM / query layer | Drizzle ORM | Type-safe schema + queries |
+| Auth | Auth.js | Provider adapters by project needs |
+| Hosting | Vercel + Fly.io | Vercel for web, Fly.io for stateful services/workers |
+| CI/CD | GitHub Actions | Required checks gate merge/deploy |
 
-**Deviations from personal defaults:** [TODO — note anything that differs from `01-stack-defaults.md`, or "none"]
+**Deviations from personal defaults:** none
 
 ---
 

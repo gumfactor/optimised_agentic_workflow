@@ -16,11 +16,11 @@ Rationale: single language, strong types, good tooling across the stack.
 
 ## Frontend
 
-**Framework:** [TODO — e.g. Next.js / Remix / SvelteKit]  
-**Styling:** [TODO — e.g. Tailwind CSS / CSS Modules]  
+**Framework:** Next.js (App Router)  
+**Styling:** Tailwind CSS + CSS variables  
 **Component pattern:** functional components only, no class components  
-**State:** [TODO — e.g. Zustand / Jotai / React Query for server state]  
-**Forms:** [TODO — e.g. React Hook Form + Zod]
+**State:** Zustand (client state) + TanStack Query (server state)  
+**Forms:** React Hook Form + Zod
 
 Non-negotiables regardless of framework:
 - Validate all form input client-side before submission
@@ -31,12 +31,12 @@ Non-negotiables regardless of framework:
 
 ## Backend
 
-**Runtime:** [TODO — e.g. Node.js / Bun / Deno]  
-**Framework:** [TODO — e.g. Hono / Fastify / Express]  
-**API style:** [TODO — e.g. REST / tRPC / GraphQL]  
+**Runtime:** Node.js (LTS)  
+**Framework:** Fastify  
+**API style:** REST  
 **Validation:** Zod for all request/response validation at boundaries  
 **Error shape:** RFC 9457 (Problem Details) for all API errors  
-**Auth:** [TODO — e.g. Clerk / Auth.js / custom JWT]
+**Auth:** Auth.js (with provider adapters as needed)
 
 Non-negotiables:
 - Validate at every external boundary — never trust input
@@ -47,10 +47,10 @@ Non-negotiables:
 
 ## Database
 
-**Default:** [TODO — e.g. PostgreSQL / SQLite / PlanetScale]  
-**ORM/query layer:** [TODO — e.g. Drizzle / Prisma / Kysley]  
+**Default:** PostgreSQL  
+**ORM/query layer:** Drizzle ORM  
 **Migration strategy:** additive-first; destructive changes require explicit approval  
-**Connection:** [TODO — e.g. direct / pooled via PgBouncer / Neon serverless]
+**Connection:** pooled via PgBouncer (or managed equivalent)
 
 Non-negotiables:
 - Migrations are version-controlled and deterministic
@@ -61,23 +61,23 @@ Non-negotiables:
 
 ## Toolchain
 
-**Package manager:** [TODO — e.g. pnpm / npm / bun]  
+**Package manager:** pnpm  
 **Linter:** ESLint  
 **Formatter:** Prettier  
-**Test runner:** [TODO — e.g. Vitest / Jest / Playwright for E2E]  
-**Monorepo:** [TODO — e.g. Turborepo / none]
+**Test runner:** Vitest (unit/integration) + Playwright (E2E)  
+**Monorepo:** Turborepo when multiple deployable apps/packages exist; otherwise none
 
 ---
 
 ## Hosting and Infrastructure
 
-**Preferred hosting:** [TODO — e.g. Vercel / Fly.io / Railway / AWS]  
+**Preferred hosting:** Vercel (web) + Fly.io (stateful services/workers when needed)  
 **Containers:** Docker for anything that isn't pure serverless  
-**Secrets management:** [TODO — e.g. .env + Doppler / AWS SSM / Vercel env]  
-**CI/CD:** [TODO — e.g. GitHub Actions]
+**Secrets management:** Doppler + environment-level `.env` injection  
+**CI/CD:** GitHub Actions
 
 ---
 
-## How to Fill This In
+## How to Use This
 
-Replace every `[TODO]` with your actual choice. The value isn't the structure — it's that agents know your actual defaults so they stop asking or guessing wrong.
+Treat these as the default decisions unless a project-level `CLAUDE.md` explicitly overrides them. If you deviate, document why and what risk the deviation introduces.

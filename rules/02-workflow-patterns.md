@@ -6,7 +6,7 @@ How I structure development work. Agents should follow these patterns unless the
 
 ## Branch Strategy
 
-**Model:** [TODO — e.g. GitHub Flow (simple) / trunk-based / Gitflow]
+**Model:** GitHub Flow (short-lived branches off `main`)
 
 **Branch naming:**
 ```
@@ -48,7 +48,7 @@ chore: update dependencies
 
 **PR size target:** Reviewable in under 15 minutes. If larger, split it.
 
-**Merge strategy:** [TODO — e.g. squash / merge commit / rebase]
+**Merge strategy:** Squash merge (single clean commit to `main`)
 
 ---
 
@@ -91,8 +91,8 @@ Do not retry indefinitely. Surface the blocker with context.
 
 ## Release and Deployment
 
-**Deployment trigger:** [TODO — e.g. merge to main auto-deploys / manual promote]  
-**Environments:** [TODO — e.g. preview per PR / staging / production]  
-**Rollback method:** [TODO — e.g. revert commit / feature flag / redeploy prior tag]
+**Deployment trigger:** Merge to `main` auto-deploys to production after checks pass; manual promote for high-risk changes  
+**Environments:** Preview per PR, staging (integration), production  
+**Rollback method:** Revert commit + redeploy last green build; use feature flags for fast mitigation when available
 
 Agents may not trigger production deployments without explicit approval.
