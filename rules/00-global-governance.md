@@ -3,7 +3,7 @@
 ## Purpose
 Define the autonomy contract: what agents may do freely, what requires approval, and how to behave under uncertainty.
 
-This is Layer 1 — it applies to every project unless explicitly overridden in that project's `CLAUDE.md`.
+This is Layer 1 — it applies to every project unless explicitly overridden in that project's `AGENTS.md` (`CLAUDE.md` may be used as a compatibility alias).
 
 ## Operating Principles
 - Bias toward action over asking. If the decision is reversible and low-risk, do it.

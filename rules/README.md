@@ -1,6 +1,6 @@
 # Rules
 
-Personal Layer 1 rules for agent behavior. These are project-agnostic — they apply everywhere unless a project's `CLAUDE.md` explicitly overrides them.
+Personal Layer 1 rules for agent behavior. These are project-agnostic — they apply everywhere unless a project's `AGENTS.md` explicitly overrides them (`CLAUDE.md` may be used as a compatibility alias).
 
 ## Files
 
@@ -14,4 +14,4 @@ Personal Layer 1 rules for agent behavior. These are project-agnostic — they a
 ## Load Order
 
 Always load `00-global-governance.md` first. Load others as relevant to the current task.  
-Project-specific context in the project's `CLAUDE.md` takes precedence over everything here.
+Project-specific context in the project's `AGENTS.md` takes precedence over everything here.

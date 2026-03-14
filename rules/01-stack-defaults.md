@@ -1,6 +1,6 @@
 # Stack Defaults
 
-Personal technology defaults for new projects. These represent my actual preferences — not generic best practice. When a project's `CLAUDE.md` specifies different choices, defer to that.
+Personal technology defaults for new projects. These represent my actual preferences — not generic best practice. When a project's `AGENTS.md` specifies different choices, defer to that (`CLAUDE.md` may be used as a compatibility alias).
 
 ---
 
