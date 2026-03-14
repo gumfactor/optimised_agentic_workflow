@@ -1,6 +1,6 @@
 # Workflow Patterns
 
-How I structure development work. Agents should follow these patterns unless the project `CLAUDE.md` specifies otherwise.
+How I structure development work. Agents should follow these patterns unless the project `AGENTS.md` specifies otherwise.
 
 ---
 

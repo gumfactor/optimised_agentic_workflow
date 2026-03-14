@@ -24,7 +24,6 @@ Load these files when starting any session where they are relevant:
 1. Copy `templates/AGENTS.md` into the new project root.
 2. Fill in every `[TODO]` section with project-specific context.
 3. Reference this repo's rules as the Layer 1 baseline — override specific items in the project `AGENTS.md` where the project differs.
-4. If a tool expects `CLAUDE.md`, create a thin compatibility `CLAUDE.md` that points to `AGENTS.md`.
 
 ## Layer 1 vs Layer 2
 

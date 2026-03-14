@@ -65,10 +65,9 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 1. Load `rules/01-stack-defaults.md` and confirm which defaults apply
 2. Ask for any project-specific overrides before generating anything
 3. Copy `templates/AGENTS.md` to the new project root and fill in all `[TODO]` fields based on what's been confirmed
-4. If a tool requires it, add a compatibility `CLAUDE.md` that points to `AGENTS.md`
-5. Scaffold the project structure using the confirmed stack
-6. Confirm dev environment works: install, lint, type check, test all pass on empty scaffold
-7. Leave a clear `## Next Steps` section in the project README
+4. Scaffold the project structure using the confirmed stack
+5. Confirm dev environment works: install, lint, type check, test all pass on empty scaffold
+6. Leave a clear `## Next Steps` section in the project README
 
 ---
 

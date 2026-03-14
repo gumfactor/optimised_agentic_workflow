@@ -1,6 +1,6 @@
 # Stack Defaults
 
-Personal technology defaults for new projects. These represent my actual preferences — not generic best practice. When a project's `AGENTS.md` specifies different choices, defer to that (`CLAUDE.md` may be used as a compatibility alias).
+Personal technology defaults for new projects. These represent my actual preferences — not generic best practice. When a project's `AGENTS.md` specifies different choices, defer to that.
 
 ---
 
@@ -80,4 +80,4 @@ Non-negotiables:
 
 ## How to Use This
 
-Treat these as the default decisions unless a project-level `CLAUDE.md` explicitly overrides them. If you deviate, document why and what risk the deviation introduces.
+Treat these as the default decisions unless a project-level `AGENTS.md` explicitly overrides them. If you deviate, document why and what risk the deviation introduces.

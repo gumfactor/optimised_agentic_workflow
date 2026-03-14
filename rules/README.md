@@ -1,6 +1,6 @@
 # Rules
 
-Personal Layer 1 rules for agent behavior. These are project-agnostic — they apply everywhere unless a project's `AGENTS.md` explicitly overrides them (`CLAUDE.md` may be used as a compatibility alias).
+Personal Layer 1 rules for agent behavior. These are project-agnostic — they apply everywhere unless a project's `AGENTS.md` explicitly overrides them.
 
 ## Files
 
