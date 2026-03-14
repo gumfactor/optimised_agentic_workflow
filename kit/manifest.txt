@@ -1,0 +1,12 @@
+# Files in this kit that should be copied to target repositories.
+# Paths are relative to the kit root.
+
+AGENTS.md
+rules/README.md
+rules/00-global-governance.md
+rules/01-stack-defaults.md
+rules/02-workflow-patterns.md
+rules/03-agent-task-templates.md
+templates/AGENTS.md
+scripts/proactive-hygiene.sh
+.github/workflows/proactive-hygiene.yml
