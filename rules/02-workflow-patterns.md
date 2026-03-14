@@ -50,6 +50,13 @@ chore: update dependencies
 
 **Merge strategy:** Squash merge (single clean commit to `main`)
 
+**Required status checks before merge:**
+- Lint
+- Type check
+- Unit/integration tests
+- Build
+- Security/dependency scan (if configured)
+
 ---
 
 ## Feature Development Flow
@@ -96,3 +103,18 @@ Do not retry indefinitely. Surface the blocker with context.
 **Rollback method:** Revert commit + redeploy last green build; use feature flags for fast mitigation when available
 
 Agents may not trigger production deployments without explicit approval.
+
+---
+
+## Autonomy Bootstrap Checklist
+
+Agent autonomy is fully active only after all items below are complete in the project-level `AGENTS.md`:
+
+1. Project purpose and scope are explicitly written.
+2. Commands are filled and verified (`install`, `dev`, `test`, `lint`/`typecheck`, `build`, migrations).
+3. Environment variable list is complete (names and meaning, no values).
+4. Sensitive areas are documented with approval requirements.
+5. Deployment and rollback procedure is documented and tested in non-production.
+6. Primary reviewers or owners are identified.
+
+If any checklist item is incomplete, agents may proceed with implementation work but must surface assumptions and avoid high-impact actions.

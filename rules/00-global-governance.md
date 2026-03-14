@@ -38,6 +38,15 @@ Agents may decide autonomously when:
 - Preserve existing public interfaces unless change impact is documented.
 - On failure: stop, surface root cause, propose safe recovery options — do not retry blindly.
 
+## Policy Enforcement
+- Governance must be enforceable by checks, not only prose. If a policy can be tested, automate it.
+- Every repo must expose standard validation commands in `package.json` scripts (or language-equivalent): `lint`, `typecheck`, `test`, `build`.
+- CI must block merges when required checks fail.
+- Required checks for protected branches: lint, typecheck, unit/integration tests, and build.
+- If security scanning is available, it is required on pull requests and main branch merges.
+- Any bypass of required checks requires explicit approval and a written rationale in the PR.
+- Rule exceptions must be time-bound and tracked with an owner and removal date.
+
 ## Security Baseline
 - Never commit secrets, keys, tokens, or credentials.
 - Minimize sensitive data in logs, errors, and traces.
@@ -52,6 +61,15 @@ Agents may decide autonomously when:
 ## Definition of Done
 A task is complete only when:
 - Requirements are implemented and traceable.
-- Relevant tests and checks pass, or gaps are explicitly documented.
+- Relevant tests and checks pass, or gaps are explicitly documented with rationale and owner.
 - Risks, caveats, and rollback path are noted for non-trivial changes.
 - Handoff is clear and actionable.
+
+Minimum measurable gates (unless Layer 2 explicitly overrides):
+- `lint`: zero errors.
+- `typecheck`: zero errors.
+- `test`: all tests pass; no new flaky test introduced.
+- Coverage: no decrease on touched files and at least 80% line coverage for new or heavily modified modules.
+- Performance: no regression above 10% on established benchmarked paths (when benchmarks exist).
+- Security: zero known high/critical vulnerabilities introduced by new dependencies.
+- Docs: update required when behavior, setup, or operations change.
