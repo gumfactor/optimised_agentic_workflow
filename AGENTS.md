@@ -60,6 +60,7 @@ This repository is guidance-first, so optional autonomy modes are configured for
 - Enabled: `yes`
 - Activation style: `always-on`
 - Approved commands:
+	- `bash scripts/proactive-hygiene.sh`
 	- `markdownlint "**/*.md"`
 	- `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
 	- `rg "Guidance version" AGENTS.md rules templates`

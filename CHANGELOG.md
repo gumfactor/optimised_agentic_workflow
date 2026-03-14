@@ -7,7 +7,8 @@ The format is based on Keep a Changelog and uses semantic versioning for guidanc
 ## [Unreleased]
 
 ### Added
-- Repository runtime configuration now includes `Proactive Hygiene Sweep` with manual-trigger phrases and bounded sweep/logging controls.
+- Repository runtime configuration now includes `Proactive Hygiene Sweep` with bounded sweep/logging controls.
+- Scheduled GitHub Actions workflow for proactive hygiene runs (`.github/workflows/proactive-hygiene.yml`) using `scripts/proactive-hygiene.sh` with auto-commit of maintenance-only fixes.
 
 ### Changed
 - Refined `Proactive Hygiene Sweep` as maintenance-only hygiene work (security, bugs, reliability, rendering/character-encoding, accessibility, compliance) and explicitly disallowed net-new feature expansion under hygiene mode.
