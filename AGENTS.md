@@ -1,5 +1,11 @@
 # Personal Agent Defaults
 
+## Document Metadata
+
+- Guidance version: `1.0.0`
+- Last updated: `2026-03-14`
+- Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
+
 This repository is **Layer 1** agent configuration — personal defaults, workflow patterns, and task templates that travel with me across all projects.
 
 ## What This Is

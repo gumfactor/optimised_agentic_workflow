@@ -1,5 +1,11 @@
 # Global Agent Governance
 
+## Document Metadata
+
+- Guidance version: `1.0.0`
+- Last updated: `2026-03-14`
+- Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
+
 ## Purpose
 Define the autonomy contract: what agents may do freely, what requires approval, and how to behave under uncertainty.
 
@@ -51,6 +57,26 @@ Agents may decide autonomously when:
 - Never commit secrets, keys, tokens, or credentials.
 - Minimize sensitive data in logs, errors, and traces.
 - Follow least-privilege principles for integrations and runtime permissions.
+
+## Data Classification Policy
+- Use four default data classes: `public`, `internal`, `confidential`, `restricted`.
+- `public`: safe for external disclosure.
+- `internal`: non-public operational/business data with low sensitivity.
+- `confidential`: customer or business-sensitive data requiring controlled access.
+- `restricted`: highest sensitivity data (credentials, financial data, high-risk personal data, legal-sensitive records).
+- If classification is uncertain, default upward to `confidential`.
+- `confidential` and `restricted` data must remain in approved Canadian regions unless project policy explicitly allows otherwise.
+- `restricted` data must never appear in logs, prompts, error payloads, or analytics events.
+
+## Guidance Versioning and Change Control
+- All guidance documents in this repository and project repositories must declare a document version.
+- Versioning uses semantic versioning:
+	- `PATCH`: wording/clarity updates with no behavioral policy change.
+	- `MINOR`: additive policy updates that are backward compatible.
+	- `MAJOR`: breaking policy changes requiring project behavior updates.
+- Every guidance update must include a short change note in commit message body.
+- Major version changes must include an explicit migration note describing what projects must update.
+- Project-level `AGENTS.md` should record which Layer 1 guidance version it targets.
 
 ## Logging and Audit Baseline
 - Application logs must be structured JSON in non-local environments.

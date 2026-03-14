@@ -2,6 +2,13 @@
 
 > Layer 2 project context. Overrides personal defaults in `gumfactor/optimised_agentic_workflow` where stated.
 
+## Document Metadata
+
+- Guidance version: `1.0.0`
+- Last updated: `[TODO — YYYY-MM-DD]`
+- Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
+- Targets Layer 1 version: `[TODO — e.g. 1.0.0]`
+
 ---
 
 ## What This Project Is
@@ -28,6 +35,8 @@
 | CI/CD | GitHub Actions | Required checks gate merge/deploy |
 
 **Deviations from personal defaults:** none
+
+**Policy change note (required on updates):** [TODO — brief summary of what changed in this guidance version]
 
 ---
 

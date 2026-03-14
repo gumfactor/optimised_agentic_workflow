@@ -1,5 +1,11 @@
 # Workflow Patterns
 
+## Document Metadata
+
+- Guidance version: `1.0.0`
+- Last updated: `2026-03-14`
+- Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
+
 How I structure development work. Agents should follow these patterns unless the project `AGENTS.md` specifies otherwise.
 
 ---

@@ -1,5 +1,11 @@
 # Agent Task Templates
 
+## Document Metadata
+
+- Guidance version: `1.0.0`
+- Last updated: `2026-03-14`
+- Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
+
 Reusable invocation patterns for common task types. Use these as the expected shape of agent behavior when a task is initiated. Agents should self-apply the relevant template when a task matches a named type.
 
 ---
