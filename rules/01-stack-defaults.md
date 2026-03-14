@@ -43,6 +43,13 @@ Non-negotiables:
 - Idempotency on operations that may be retried
 - Structured logging with correlation IDs
 
+**Auth decision policy:**
+- Default auth architecture: Auth.js + PostgreSQL session/account tables on the same project database.
+- For Canadian residency projects, run auth and database in Canada (Fly.io `yyz` or WHC VPS / ca-central-1 managed services).
+- Supabase is opt-in, not default. Use it only when a project explicitly needs bundled platform capabilities (auth + storage + realtime + instant APIs).
+- If only auth is required, prefer Auth.js over self-hosted Supabase to minimize operational complexity.
+- If Supabase is selected, document why in project `AGENTS.md`, pin versions, and define backup/patching cadence before launch.
+
 ---
 
 ## Database
