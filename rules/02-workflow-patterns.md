@@ -81,6 +81,12 @@ chore: update dependencies
 - Agents may open and update PRs.
 - Agents may not merge high-risk PRs without explicit human approval.
 
+**Solo-repository exception:**
+- In single-maintainer repositories, direct commits to `main` are allowed.
+- Even in solo mode, required checks still apply (`lint`, `typecheck`, `test`, `build` where available).
+- In solo mode, every production-affecting change must still update changelog/release-note artifacts.
+- If a repository moves from solo to team collaboration, default PR and approval rules apply immediately.
+
 ---
 
 ## Feature Development Flow
