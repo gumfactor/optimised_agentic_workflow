@@ -152,6 +152,8 @@ Use this mode when the agent should continuously validate and remediate during i
 
 Use this mode when the agent should actively look for additional issues and fix safe ones beyond the immediate request.
 
+This is a gentle maintenance pass, not a feature-delivery mode.
+
 **Activation behavior:**
 - `manual-trigger`: run only when the user includes a configured trigger phrase in the request.
 - `always-on`: run by default for in-scope tasks after primary implementation validation is complete.
@@ -166,15 +168,17 @@ Use this mode when the agent should actively look for additional issues and fix 
 
 **Operating sequence:**
 1. Build an issue queue from objective signals only: failing tests, lint errors, type errors, static analysis findings, and documented TODO or FIXME markers if the project allows them.
-2. Rank findings by severity, user impact, and proximity to the current task.
-3. Fix one issue at a time, starting with high-confidence, low-blast-radius defects.
-4. Validate each fix immediately with the narrowest command that proves resolution, then rerun the relevant broader check.
-5. Record every finding as `fixed`, `deferred`, or `blocked`, including rationale for anything not remediated.
-6. End the sweep when no in-scope actionable issues remain or only approval-gated work is left.
+2. Limit scope to maintenance findings: security flaws, correctness bugs, reliability defects, rendering or character-encoding issues, accessibility regressions, and standards compliance issues.
+3. Rank findings by severity, user impact, and proximity to the current task.
+4. Fix one issue at a time, starting with high-confidence, low-blast-radius defects.
+5. Validate each fix immediately with the narrowest command that proves resolution, then rerun the relevant broader check.
+6. Record every finding as `fixed`, `deferred`, or `blocked`, including rationale for anything not remediated.
+7. End the sweep when no in-scope actionable issues remain or only approval-gated work is left.
 
 **Scope controls:**
 - Do not convert a feature task into a repo-wide cleanup.
 - Do not rewrite stable areas merely because improvements are possible.
+- Do not create or expand product features under hygiene mode.
 - Keep opportunistic changes reviewable and logically separate from the primary task when practical.
 
 ---

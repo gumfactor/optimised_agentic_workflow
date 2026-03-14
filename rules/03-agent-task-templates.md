@@ -132,14 +132,16 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 
 1. Confirm the mode is enabled in project `AGENTS.md` and load the allowed search and validation commands.
 2. Build an issue list from objective signals only: tests, lint, typecheck, static analysis, and allowed issue markers.
-3. Triage the list by severity and blast radius before fixing anything.
-4. Fix safe in-scope issues one at a time with immediate validation after each change.
-5. Log each item as `fixed`, `deferred`, or `blocked` with a short reason.
-6. End only when no actionable in-scope issues remain or the configured sweep budget is exhausted.
+3. Keep only maintenance findings: security flaws, correctness bugs, reliability defects, rendering or character-encoding issues, accessibility regressions, and standards compliance issues.
+4. Triage the list by severity and blast radius before fixing anything.
+5. Fix safe in-scope issues one at a time with immediate validation after each change.
+6. Log each item as `fixed`, `deferred`, or `blocked` with a short reason.
+7. End only when no actionable in-scope issues remain or the configured sweep budget is exhausted.
 
 **Stop and ask if:**
 - The remaining findings need approval or cross-team decisions.
 - The sweep starts expanding into broad refactors or policy changes.
+- The work would become net-new feature development or major feature expansion.
 - The issue source is ambiguous and no high-confidence next move exists.
 
 ---

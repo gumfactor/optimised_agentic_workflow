@@ -49,10 +49,11 @@ Two higher-autonomy modes may be enabled at Layer 2. Both are `off` by default a
 - Not allowed without separate approval: broad refactors, dependency upgrades, schema changes, production actions, or fixes outside configured scope.
 
 ### Mode B: Proactive Hygiene Sweep
-- Purpose: actively search for adjacent issues, fix safe ones, and leave a documented queue for anything that exceeds scope or approval boundaries.
+- Purpose: actively search for adjacent quality and risk issues, fix safe ones, and leave a documented queue for anything that exceeds scope or approval boundaries.
 - Scope default: the current task surface plus explicitly listed hygiene targets in project `AGENTS.md`.
-- Allowed behavior when enabled: run approved search, lint, typecheck, test, and static-analysis commands; remediate local defects; and document deferred findings.
-- Not allowed without separate approval: repo-wide churn, speculative rewrites, policy relaxations, or opportunistic changes in sensitive areas.
+- Allowed behavior when enabled: run approved search, lint, typecheck, test, and static-analysis commands; remediate local defects in maintenance categories; and document deferred findings.
+- Maintenance categories include: security flaws, correctness bugs, reliability issues, rendering and character-encoding issues, accessibility regressions, and clear standards compliance defects.
+- Not allowed without separate approval: net-new feature development, major feature expansion, repo-wide churn, speculative rewrites, policy relaxations, or opportunistic changes in sensitive areas.
 
 ### Layer 2 Activation Requirements
 Projects must define all of the following before either mode is considered active:

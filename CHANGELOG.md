@@ -9,6 +9,10 @@ The format is based on Keep a Changelog and uses semantic versioning for guidanc
 ### Added
 - Repository runtime configuration now includes `Proactive Hygiene Sweep` with manual-trigger phrases and bounded sweep/logging controls.
 
+### Changed
+- Refined `Proactive Hygiene Sweep` as maintenance-only hygiene work (security, bugs, reliability, rendering/character-encoding, accessibility, compliance) and explicitly disallowed net-new feature expansion under hygiene mode.
+- Updated repository runtime config so proactive hygiene runs as a bounded always-on background maintenance pass, while self-healing remains explicit-trigger only.
+
 ## [1.1.0] - 2026-03-14
 
 ### Added
