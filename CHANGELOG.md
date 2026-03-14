@@ -6,8 +6,18 @@ The format is based on Keep a Changelog and uses semantic versioning for guidanc
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-03-14
+
+### Added
+- Optional `Self-Healing Validation Loop` mode with explicit Layer 2 activation requirements, bounded retry rules, logging requirements, and completion criteria.
+- Optional `Proactive Hygiene Sweep` mode with issue discovery, triage, remediation, and deferral workflow guidance.
+- New task templates for both optional autonomy modes.
+- Project template fields for mode enablement, approved commands, scope, logs, retry budgets, and escalation triggers.
+- Manual-trigger activation style and trigger-phrase gates for optional modes, enabling one-time configuration with explicit per-request activation.
+
 ### Changed
 - Added solo-repository exception for direct commits to `main` with required checks and release documentation safeguards.
+- Bumped guidance documents to version `1.1.0` for additive autonomy policy changes.
 
 ## [1.0.0] - 2026-03-14
 

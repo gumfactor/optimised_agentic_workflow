@@ -2,7 +2,7 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `2026-03-14`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
@@ -37,3 +37,23 @@ Load these files when starting any session where they are relevant:
 - **Project `AGENTS.md` (Layer 2):** Project-specific. Stack, commands, architecture, MCP tools, deployment. Overrides Layer 1 where stated.
 
 Agents should treat Layer 2 as authoritative where it conflicts with Layer 1.
+
+## This Repository Runtime Mode Config
+
+This repository is guidance-first, so optional autonomy modes are configured for documentation maintenance workflows only.
+
+### Self-Healing Validation Loop
+- Enabled: `yes`
+- Activation style: `manual-trigger`
+- Manual trigger phrases: `self-heal on`, `run self-healing`
+- Approved commands:
+	- `markdownlint "**/*.md"`
+	- `rg "Guidance version" AGENTS.md rules templates`
+- Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
+- Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
+- Remediation log path: `.agent/logs/self-healing.md`
+- Retry budget: `3 retries per issue`, `10 total attempts per task`, `30 minutes max`
+- Allowed auto-fixes: markdown clarity/consistency fixes, metadata version alignment, internal link/section consistency
+- Must escalate for: structural policy changes, changes affecting non-doc automation, any action outside workspace
+
+Default behavior: even though configured, self-healing stays off unless one of the trigger phrases is explicitly present in the request.

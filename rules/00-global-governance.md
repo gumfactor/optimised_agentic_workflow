@@ -2,7 +2,7 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `2026-03-14`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
@@ -38,11 +38,50 @@ Agents may decide autonomously when:
 - Verification can be executed in the current environment.
 - Security and privacy constraints are not weakened.
 
+## Optional Autonomous Operating Modes
+
+Two higher-autonomy modes may be enabled at Layer 2. Both are `off` by default and require explicit project-level configuration before use.
+
+### Mode A: Self-Healing Validation Loop
+- Purpose: run tests during implementation, log each validation attempt, fix failures related to the current work, and continue until either the checks pass or a stop condition is met.
+- Scope default: only the files, modules, and tests directly touched by the active task.
+- Allowed behavior when enabled: run approved local validation commands, create or update tests related to the task, make bounded corrective edits, and re-run validation.
+- Not allowed without separate approval: broad refactors, dependency upgrades, schema changes, production actions, or fixes outside configured scope.
+
+### Mode B: Proactive Hygiene Sweep
+- Purpose: actively search for adjacent issues, fix safe ones, and leave a documented queue for anything that exceeds scope or approval boundaries.
+- Scope default: the current task surface plus explicitly listed hygiene targets in project `AGENTS.md`.
+- Allowed behavior when enabled: run approved search, lint, typecheck, test, and static-analysis commands; remediate local defects; and document deferred findings.
+- Not allowed without separate approval: repo-wide churn, speculative rewrites, policy relaxations, or opportunistic changes in sensitive areas.
+
+### Layer 2 Activation Requirements
+Projects must define all of the following before either mode is considered active:
+- Whether the mode is enabled.
+- Activation style: `manual-trigger` or `always-on`.
+- Manual trigger phrases if `manual-trigger` is selected.
+- Which commands are approved for the mode.
+- Which paths are in scope and which are excluded.
+- Where remediation and issue logs are written.
+- Maximum retry counts, time budget, and escalation threshold.
+- Which change classes are allowed for auto-fix and which require human approval.
+
+If any activation input is missing, agents must treat the mode as disabled.
+
+### Manual Trigger Rule (Recommended Default)
+- Recommended default for both optional modes: `manual-trigger`.
+- In `manual-trigger`, the mode is preconfigured but inactive until the user explicitly invokes it in the request.
+- If no trigger phrase appears, agents must run normal mode behavior even when the optional mode is enabled.
+- A project should define short trigger aliases (for example `self-heal on` and `hygiene sweep`) to keep activation fast and explicit.
+
 ## Reliability Contract
 - Every meaningful change must include validation evidence.
 - Prefer small, incremental changes over large speculative rewrites.
 - Preserve existing public interfaces unless change impact is documented.
 - On failure: stop, surface root cause, propose safe recovery options — do not retry blindly.
+- When an optional autonomous mode is active, every loop iteration must be logged with the command run, result, files touched, and next decision.
+- Autonomous retry loops must be bounded. Default ceiling if Layer 2 does not specify a stricter value: 3 fix attempts per issue and 10 total remediation attempts per task.
+- If the same failure repeats twice without measurable improvement, stop the loop and escalate with evidence.
+- Validation must narrow before it broadens: run focused checks first, then wider suites only after local checks pass.
 
 ## Policy Enforcement
 - Governance must be enforceable by checks, not only prose. If a policy can be tested, automate it.
@@ -52,6 +91,7 @@ Agents may decide autonomously when:
 - If security scanning is available, it is required on pull requests and main branch merges.
 - Any bypass of required checks requires explicit approval and a written rationale in the PR.
 - Rule exceptions must be time-bound and tracked with an owner and removal date.
+- If self-healing or proactive hygiene modes are enabled, their log artifacts must be retained in the workspace or CI artifacts long enough to support review.
 
 ## Security Baseline
 - Never commit secrets, keys, tokens, or credentials.
@@ -94,6 +134,7 @@ Agents may decide autonomously when:
 - Report progress at short checkpoints during multi-step work.
 - Report blockers immediately with options and tradeoffs — not just the problem.
 - Provide concise change summaries with validation outcomes.
+- When an autonomous mode is active, distinguish between `fixed`, `deferred`, and `blocked` issues in the summary.
 
 ## Definition of Done
 A task is complete only when:
@@ -111,3 +152,7 @@ Minimum measurable gates (unless Layer 2 explicitly overrides):
 - Security: zero known high/critical vulnerabilities introduced by new dependencies.
 - Docs: update required when behavior, setup, or operations change.
 - Release communication: changelog and release notes updated when user-facing or operational behavior changes.
+
+Mode-specific completion criteria when enabled:
+- Self-healing mode: relevant validation commands are green, remediation log shows each failed-to-pass transition, and unresolved items are explicitly marked with owner and next action.
+- Proactive hygiene mode: configured issue-search commands have been run, safe findings were either fixed or logged as deferred, and no high-severity actionable finding remains unclassified.

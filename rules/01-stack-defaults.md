@@ -2,7 +2,7 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `2026-03-14`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 

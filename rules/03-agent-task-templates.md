@@ -2,7 +2,7 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `2026-03-14`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
@@ -100,6 +100,47 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 - Cover: happy path, edge cases, error states, permission boundaries
 - Use the existing test patterns in the project — don't introduce a new test style
 - Prefer tests that are readable as documentation of expected behavior
+
+---
+
+## Task: Self-Healing Validation Loop
+
+**Trigger:** "self-heal", "auto-fix until green", "heal as you go", or project automation enabling self-healing mode
+
+**Steps:**
+
+1. Confirm the mode is enabled in project `AGENTS.md` and read its command, scope, and retry settings before editing.
+2. Define the first validation checkpoint and run the narrowest approved test command before broadening scope.
+3. Write a remediation-log entry for each test run, including failure signature and current hypothesis.
+4. Apply the smallest fix tied to the observed failure, then rerun the same command immediately.
+5. Once the failing check passes, run the next broader approved validation command.
+6. Continue until all configured checks pass or an escalation threshold is reached.
+7. Finish with a summary that separates what was fixed, what was deferred, and why the loop ended.
+
+**Stop and ask if:**
+- The mode is not fully configured at Layer 2.
+- The fix would cross a dependency, schema, public API, or sensitive-area boundary.
+- The same failure repeats without progress.
+
+---
+
+## Task: Proactive Hygiene Sweep
+
+**Trigger:** "proactively check for issues", "hygiene sweep", "find and fix adjacent issues", or project automation enabling proactive mode
+
+**Steps:**
+
+1. Confirm the mode is enabled in project `AGENTS.md` and load the allowed search and validation commands.
+2. Build an issue list from objective signals only: tests, lint, typecheck, static analysis, and allowed issue markers.
+3. Triage the list by severity and blast radius before fixing anything.
+4. Fix safe in-scope issues one at a time with immediate validation after each change.
+5. Log each item as `fixed`, `deferred`, or `blocked` with a short reason.
+6. End only when no actionable in-scope issues remain or the configured sweep budget is exhausted.
+
+**Stop and ask if:**
+- The remaining findings need approval or cross-team decisions.
+- The sweep starts expanding into broad refactors or policy changes.
+- The issue source is ambiguous and no high-confidence next move exists.
 
 ---
 

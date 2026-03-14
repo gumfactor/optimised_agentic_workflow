@@ -4,10 +4,10 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `[TODO — YYYY-MM-DD]`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
-- Targets Layer 1 version: `[TODO — e.g. 1.0.0]`
+- Targets Layer 1 version: `[TODO — e.g. 1.1.0]`
 
 ---
 
@@ -73,6 +73,70 @@ Key areas:
 # Database migrations
 [TODO]
 ```
+
+---
+
+## Optional Autonomy Modes
+
+Configure these only if you want agents to use them. Leave disabled otherwise.
+
+### Self-Healing Validation Loop
+
+**Enabled:** `[TODO — yes/no]`
+
+**Activation style:** `[TODO — manual-trigger (recommended) / always-on]`
+
+**Manual trigger phrases (required if manual-trigger):**
+`[TODO — e.g. "self-heal on", "run self-healing", "heal as you go"]`
+
+**Approved commands:**
+```bash
+[TODO — e.g. pnpm test -- --runInBand src/foo/*.test.ts]
+[TODO — e.g. pnpm lint src/foo --max-warnings=0]
+```
+
+**Scope:** `[TODO — paths, packages, or services this mode may touch]`
+
+**Excluded paths / sensitive areas:** `[TODO]`
+
+**Remediation log path:** `[TODO — e.g. docs/agent-remediation-log.md or .agent/logs/self-healing.jsonl]`
+
+**Retry budget:** `[TODO — e.g. 3 retries per issue, 10 total attempts, 30 minutes max]`
+
+**Allowed auto-fixes:** `[TODO — e.g. tests, local logic fixes, config corrections inside service boundary]`
+
+**Must escalate for:** `[TODO — e.g. dependency upgrades, schema changes, auth, billing, public API]`
+
+### Proactive Hygiene Sweep
+
+**Enabled:** `[TODO — yes/no]`
+
+**Activation style:** `[TODO — manual-trigger (recommended) / always-on]`
+
+**Manual trigger phrases (required if manual-trigger):**
+`[TODO — e.g. "hygiene sweep", "proactive fix pass", "find and fix nearby issues"]`
+
+**Approved search / validation commands:**
+```bash
+[TODO — e.g. pnpm lint]
+[TODO — e.g. pnpm typecheck]
+[TODO — e.g. pnpm test -- --changedSince=origin/main]
+[TODO — e.g. rg "TODO|FIXME" src]
+```
+
+**Scope:** `[TODO — where opportunistic fixes are allowed]`
+
+**Excluded paths / sensitive areas:** `[TODO]`
+
+**Issue log path:** `[TODO — e.g. docs/agent-hygiene-log.md or .agent/logs/hygiene.jsonl]`
+
+**Sweep budget:** `[TODO — e.g. 60 minutes or 15 findings per run]`
+
+**Severity / triage rule:** `[TODO — what counts as high, medium, low and what must be fixed immediately]`
+
+**Allowed auto-fixes:** `[TODO — e.g. lint errors, missing tests near touched code, straightforward type fixes]`
+
+**Must escalate for:** `[TODO — e.g. repo-wide refactors, security posture changes, flaky test investigation across teams]`
 
 ---
 
@@ -149,3 +213,4 @@ Mark complete before granting full autonomy to agents:
 - [ ] Deployment and rollback steps are tested in non-production.
 - [ ] Changelog and release-note process is defined.
 - [ ] Owners/reviewers are defined.
+- [ ] Optional autonomy modes are either disabled or fully configured.

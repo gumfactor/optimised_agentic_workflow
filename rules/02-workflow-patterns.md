@@ -2,7 +2,7 @@
 
 ## Document Metadata
 
-- Guidance version: `1.0.0`
+- Guidance version: `1.1.0`
 - Last updated: `2026-03-14`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
@@ -114,6 +114,71 @@ Agents should not jump straight to implementation without completing step 1.
 
 ---
 
+## Optional Execution Modes
+
+These are opt-in workflows. They are active only when a project-level `AGENTS.md` enables them and fills in the required commands, scope, and safeguards.
+
+### Self-Healing Validation Loop
+
+Use this mode when the agent should continuously validate and remediate during implementation.
+
+**Activation behavior:**
+- `manual-trigger`: run only when the user includes a configured trigger phrase in the request.
+- `always-on`: run by default for in-scope implementation tasks.
+- Recommended default: `manual-trigger`.
+
+**Activation prerequisites:**
+- Activation style and trigger phrases (if manual) are defined.
+- Approved validation commands are defined.
+- A remediation log path is defined.
+- Retry ceilings and escalation thresholds are defined.
+- Excluded paths and sensitive areas are explicit.
+
+**Operating sequence:**
+1. Establish validation checkpoints before editing: after scaffold, after each meaningful logic change, and before handoff.
+2. Run the narrowest relevant tests first: touched unit tests, nearest package/module tests, then wider suites only if the narrow checks pass.
+3. Append a remediation-log entry for each run with timestamp, command, result, hypothesis, and touched files.
+4. If validation fails, isolate the smallest failing unit, apply the minimal corrective change, and rerun the same command before expanding scope.
+5. After the original failure is green, run adjacent validation to confirm the fix did not regress nearby behavior.
+6. Stop only when the configured validation set is green or an escalation condition is triggered.
+
+**Escalation conditions:**
+- Same failure repeats twice with no meaningful signal improvement.
+- Fix would cross a public API, schema, dependency, or approval boundary.
+- Wider validation reveals unrelated failures outside allowed scope.
+- Retry or time budget is exhausted.
+
+### Proactive Hygiene Sweep
+
+Use this mode when the agent should actively look for additional issues and fix safe ones beyond the immediate request.
+
+**Activation behavior:**
+- `manual-trigger`: run only when the user includes a configured trigger phrase in the request.
+- `always-on`: run by default for in-scope tasks after primary implementation validation is complete.
+- Recommended default: `manual-trigger`.
+
+**Activation prerequisites:**
+- Activation style and trigger phrases (if manual) are defined.
+- Approved search and validation commands are defined.
+- A hygiene issue log path is defined.
+- A severity model or triage rule is defined.
+- Scope boundaries for opportunistic fixes are explicit.
+
+**Operating sequence:**
+1. Build an issue queue from objective signals only: failing tests, lint errors, type errors, static analysis findings, and documented TODO or FIXME markers if the project allows them.
+2. Rank findings by severity, user impact, and proximity to the current task.
+3. Fix one issue at a time, starting with high-confidence, low-blast-radius defects.
+4. Validate each fix immediately with the narrowest command that proves resolution, then rerun the relevant broader check.
+5. Record every finding as `fixed`, `deferred`, or `blocked`, including rationale for anything not remediated.
+6. End the sweep when no in-scope actionable issues remain or only approval-gated work is left.
+
+**Scope controls:**
+- Do not convert a feature task into a repo-wide cleanup.
+- Do not rewrite stable areas merely because improvements are possible.
+- Keep opportunistic changes reviewable and logically separate from the primary task when practical.
+
+---
+
 ## When to Stop and Escalate
 
 Stop and surface to the developer when:
@@ -121,6 +186,8 @@ Stop and surface to the developer when:
 - The fix requires changing a public interface or shared contract
 - The change would affect more than one service or team's scope
 - A test is failing and the fix isn't clear within 2 attempts
+- An optional autonomous mode reaches its configured retry or time budget
+- The remaining issues are real but outside configured auto-fix permissions
 
 Do not retry indefinitely. Surface the blocker with context.
 
@@ -156,5 +223,6 @@ Agent autonomy is fully active only after all items below are complete in the pr
 4. Sensitive areas are documented with approval requirements.
 5. Deployment and rollback procedure is documented and tested in non-production.
 6. Primary reviewers or owners are identified.
+7. Optional autonomy modes are either disabled or fully configured with commands, logs, scope, and stop conditions.
 
 If any checklist item is incomplete, agents may proceed with implementation work but must surface assumptions and avoid high-impact actions.
