@@ -71,10 +71,20 @@ Non-negotiables:
 
 ## Hosting and Infrastructure
 
-**Preferred hosting:** Vercel (web) + Fly.io (stateful services/workers when needed)  
-**Containers:** Docker for anything that isn't pure serverless  
-**Secrets management:** Doppler + environment-level `.env` injection  
-**CI/CD:** GitHub Actions
+**Preferred hosting:** Fly.io (yyz — Toronto) for all services; deploy all apps as Docker containers pinned to the `yyz` region  
+**Strict sovereignty alternative:** WHC VPS (whc.ca — Montreal) for projects requiring Canadian company ownership of infrastructure, in addition to Canadian data residency  
+**CDN:** Cloudflare (Canadian PoPs in Toronto, Vancouver, Montreal)  
+**File/media storage:** AWS S3 (ca-central-1 — Montreal) or Cloudflare R2  
+**Database hosting:** Neon (ca-central-1) or self-hosted PostgreSQL on Fly.io (yyz) / WHC VPS  
+**Containers:** Docker for all services — required for Fly.io deployment and WHC VPS portability  
+**Secrets management:** AWS Secrets Manager (ca-central-1) as default; self-hosted Infisical on WHC VPS for strict sovereignty projects  
+**CI/CD:** GitHub Actions (hosted runners are acceptable for CI; for strict sovereignty projects use self-hosted runners on WHC VPS)
+
+**Data residency policy:**
+- All projects default to Canadian data residency (data physically stored in Canada).
+- Projects flagged as strict sovereignty must also use Canadian-owned infrastructure (WHC VPS) and avoid US-company managed services where alternatives exist.
+- When starting a project, explicitly declare in its `AGENTS.md` whether it is standard (Canadian residency) or strict sovereignty (Canadian ownership required).
+- Vercel is not an acceptable default — it has no Canadian compute region.
 
 ---
 

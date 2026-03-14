@@ -8,6 +8,10 @@
 
 [TODO — 2–3 sentence description of what this project does, who uses it, and what problem it solves]
 
+**Data sovereignty tier:** [TODO — choose one]
+- `standard` — Canadian data residency required (data stored in Canada; US-company managed services acceptable)
+- `strict` — Canadian ownership required (WHC VPS, AWS ca-central-1 only; no US-company managed services)
+
 ---
 
 ## Stack
@@ -126,6 +130,7 @@ The following require extra care or explicit approval before changing:
 Mark complete before granting full autonomy to agents:
 
 - [ ] Purpose and scope are complete.
+- [ ] Data sovereignty tier is declared (`standard` or `strict`).
 - [ ] Command block is fully filled and verified.
 - [ ] Environment variable inventory is complete.
 - [ ] Sensitive areas and approval boundaries are explicit.
