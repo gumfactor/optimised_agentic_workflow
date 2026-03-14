@@ -56,4 +56,20 @@ This repository is guidance-first, so optional autonomy modes are configured for
 - Allowed auto-fixes: markdown clarity/consistency fixes, metadata version alignment, internal link/section consistency
 - Must escalate for: structural policy changes, changes affecting non-doc automation, any action outside workspace
 
-Default behavior: even though configured, self-healing stays off unless one of the trigger phrases is explicitly present in the request.
+### Proactive Hygiene Sweep
+- Enabled: `yes`
+- Activation style: `manual-trigger`
+- Manual trigger phrases: `hygiene sweep on`, `run hygiene sweep`
+- Approved commands:
+	- `markdownlint "**/*.md"`
+	- `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
+	- `rg "Guidance version" AGENTS.md rules templates`
+- Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
+- Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
+- Issue log path: `.agent/logs/hygiene.md`
+- Sweep budget: `30 minutes max`, `20 findings max per run`
+- Severity / triage rule: metadata/version mismatches and broken structure are `high`; clarity and consistency issues are `medium`; cosmetic wording is `low`
+- Allowed auto-fixes: markdown consistency, link/heading cleanup, stale guidance metadata alignment, obvious typo-level corrections
+- Must escalate for: structural policy changes, non-doc automation impact, cross-repo policy divergence, any action outside workspace
+
+Default behavior: even though configured, both optional modes stay off unless one of their trigger phrases is explicitly present in the request.

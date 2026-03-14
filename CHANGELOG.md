@@ -6,6 +6,9 @@ The format is based on Keep a Changelog and uses semantic versioning for guidanc
 
 ## [Unreleased]
 
+### Added
+- Repository runtime configuration now includes `Proactive Hygiene Sweep` with manual-trigger phrases and bounded sweep/logging controls.
+
 ## [1.1.0] - 2026-03-14
 
 ### Added
