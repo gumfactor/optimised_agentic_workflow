@@ -1,5 +1,9 @@
 # Files in this kit that should be copied to target repositories.
 # Paths are relative to the kit root.
+#
+# Entry format:
+#   source_path                 copies to the same relative path in target
+#   source_path:target_path     maps source to a different destination path
 
 AGENTS.md
 rules/README.md
@@ -9,4 +13,4 @@ rules/02-workflow-patterns.md
 rules/03-agent-task-templates.md
 templates/AGENTS.md
 scripts/proactive-hygiene.sh
-.github/workflows/proactive-hygiene.yml
+templates/workflows/proactive-hygiene.yml:.github/workflows/proactive-hygiene.yml

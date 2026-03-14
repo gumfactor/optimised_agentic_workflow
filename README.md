@@ -37,11 +37,25 @@ The copied file list is controlled by `kit/manifest.txt`.
 
 This repository includes a background hygiene workflow that runs a bounded maintenance pass for documentation quality and safety.
 
-- Workflow: `.github/workflows/proactive-hygiene.yml`
-- Script: `scripts/proactive-hygiene.sh`
+- Script: `scripts/proactive-hygiene.sh` — the hygiene logic; copied to each target repo
+- Reusable workflow: `.github/workflows/proactive-hygiene-reusable.yml` — central, callable definition
+- Caller workflow (installed to target repos): `templates/workflows/proactive-hygiene.yml` → `.github/workflows/proactive-hygiene.yml`
 - Log output: `.agent/logs/hygiene.md`
 - Schedule: daily via GitHub Actions cron, plus manual `workflow_dispatch`
 
-The automation is intentionally maintenance-only. It focuses on low-risk issues such as markdown consistency, metadata alignment, TODO/FIXME surfacing, and rendering or character-set formatting cleanup. It must not perform net-new feature work.
+The automation is intentionally maintenance-only. It must not perform net-new feature work.
 
-This runner can stay active in this repository and in any target repository where these files are installed.
+### How the reusable workflow pattern works
+
+This repo hosts the full workflow logic in one place (`proactive-hygiene-reusable.yml`). Target repos receive a tiny caller file that references it:
+
+```yaml
+jobs:
+  hygiene:
+    uses: gumfactor/optimised_agentic_workflow/.github/workflows/proactive-hygiene-reusable.yml@main
+```
+
+This means:
+- Workflow logic updates (steps, tools, patterns) are inherited by all target repos automatically on next run.
+- Only the hygiene script needs re-syncing when its logic changes.
+- Target repos control their own schedule and trigger settings in the caller file.

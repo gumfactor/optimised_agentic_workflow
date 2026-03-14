@@ -2,7 +2,7 @@ name: Proactive Hygiene
 
 on:
   schedule:
-    - cron: '17 4 * * *'
+    - cron: '17 4 * * *'   # adjust schedule as needed
   workflow_dispatch:
 
 permissions:

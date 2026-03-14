@@ -63,14 +63,22 @@ copied=0
 skipped=0
 updated=0
 
-while IFS= read -r rel_path; do
-  [[ -z "$rel_path" || "$rel_path" =~ ^# ]] && continue
+while IFS= read -r entry; do
+  [[ -z "$entry" || "$entry" =~ ^# ]] && continue
 
-  src="$ROOT_DIR/$rel_path"
-  dst="$TARGET_REPO/$rel_path"
+  if [[ "$entry" == *:* ]]; then
+    rel_src="${entry%%:*}"
+    rel_dst="${entry##*:}"
+  else
+    rel_src="$entry"
+    rel_dst="$entry"
+  fi
+
+  src="$ROOT_DIR/$rel_src"
+  dst="$TARGET_REPO/$rel_dst"
 
   if [[ ! -e "$src" ]]; then
-    echo "Missing source file from manifest: $rel_path" >&2
+    echo "Missing source file from manifest: $rel_src" >&2
     exit 1
   fi
 
@@ -82,17 +90,17 @@ while IFS= read -r rel_path; do
   fi
 
   if [[ -e "$dst" && "$FORCE" != "yes" ]]; then
-    echo "skip    $rel_path (exists; use --force to overwrite)"
+    echo "skip    $rel_dst (exists; use --force to overwrite)"
     skipped=$((skipped + 1))
     continue
   fi
 
   if [[ "$DRY_RUN" == "yes" ]]; then
     if [[ -e "$dst" ]]; then
-      echo "update  $rel_path"
+      echo "update  $rel_dst"
       updated=$((updated + 1))
     else
-      echo "copy    $rel_path"
+      echo "copy    $rel_dst"
       copied=$((copied + 1))
     fi
     continue
@@ -100,15 +108,15 @@ while IFS= read -r rel_path; do
 
   cp "$src" "$dst"
 
-  if [[ "$rel_path" == scripts/*.sh ]]; then
+  if [[ "$rel_src" == scripts/*.sh ]]; then
     chmod +x "$dst"
   fi
 
   if [[ "$existed_before" == "yes" ]]; then
-    echo "update  $rel_path"
+    echo "update  $rel_dst"
     updated=$((updated + 1))
   else
-    echo "copy    $rel_path"
+    echo "copy    $rel_dst"
     copied=$((copied + 1))
   fi
 done < "$MANIFEST_PATH"
