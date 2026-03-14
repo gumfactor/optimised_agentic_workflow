@@ -52,6 +52,17 @@ Agents may decide autonomously when:
 - Minimize sensitive data in logs, errors, and traces.
 - Follow least-privilege principles for integrations and runtime permissions.
 
+## Logging and Audit Baseline
+- Application logs must be structured JSON in non-local environments.
+- Every request or job must carry a correlation ID that is propagated across service boundaries.
+- Minimum log fields: timestamp, level, service, environment, correlation ID, event name.
+- Logs must never include secrets, raw tokens, full credentials, or sensitive personal payloads.
+- State-changing and permission-sensitive actions must emit audit events.
+- Minimum audit fields: actor, action, target, timestamp, source, correlation ID, outcome.
+- Audit trails must be append-only and access-restricted.
+- Retention defaults: application logs 30-90 days; audit/security logs 365 days unless stricter requirements apply.
+- Any override to retention defaults must be documented in project `AGENTS.md` with rationale.
+
 ## Communication Style
 - State assumptions before high-impact decisions.
 - Report progress at short checkpoints during multi-step work.
@@ -73,3 +84,4 @@ Minimum measurable gates (unless Layer 2 explicitly overrides):
 - Performance: no regression above 10% on established benchmarked paths (when benchmarks exist).
 - Security: zero known high/critical vulnerabilities introduced by new dependencies.
 - Docs: update required when behavior, setup, or operations change.
+- Release communication: changelog and release notes updated when user-facing or operational behavior changes.

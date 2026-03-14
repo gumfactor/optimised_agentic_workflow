@@ -21,6 +21,12 @@ spike/<short-slug>   ← exploratory, never merged directly
 - Short-lived branches only — if a branch lives more than a few days, it should be broken into smaller pieces
 - Never force-push to `main` or shared branches without explicit approval
 
+**Commit cadence on active branches:**
+- On any day work is performed on a branch, make at least one meaningful commit.
+- No commit is required on inactive days.
+- Never create synthetic or empty commits just to satisfy cadence.
+- If a branch is inactive for 5 business days, close/archive it or leave a status note in the PR/issue.
+
 ---
 
 ## Commit Style
@@ -36,6 +42,9 @@ chore: update dependencies
 - One logical change per commit
 - Commit message describes *what changed and why*, not *what files were touched*
 - Do not squash informative commit history without reason
+- Commit format: `type(scope): concise outcome`.
+- Use a commit body for non-trivial changes including what changed, why, and rollback notes.
+- Avoid mixing unrelated work types in one commit (feature + refactor + chore).
 
 ---
 
@@ -45,6 +54,7 @@ chore: update dependencies
 - Lint, type checks, and tests pass locally
 - Self-review: read the diff as if reviewing someone else's code
 - Description covers: what changed, why, and how to verify
+- Include risk level and rollback plan for medium/high-risk changes.
 
 **PR size target:** Reviewable in under 15 minutes. If larger, split it.
 
@@ -56,6 +66,14 @@ chore: update dependencies
 - Unit/integration tests
 - Build
 - Security/dependency scan (if configured)
+
+**Approvals default:**
+- 1 approval required for standard changes.
+- 2 approvals required for security, schema, or public API contract changes.
+
+**Agent merge authority:**
+- Agents may open and update PRs.
+- Agents may not merge high-risk PRs without explicit human approval.
 
 ---
 
@@ -103,6 +121,16 @@ Do not retry indefinitely. Surface the blocker with context.
 **Rollback method:** Revert commit + redeploy last green build; use feature flags for fast mitigation when available
 
 Agents may not trigger production deployments without explicit approval.
+
+## Changelog and Release Notes
+
+- Maintain a changelog for user-visible or integration-impacting changes.
+- Update changelog at release time, not for every commit.
+- Changelog categories: Added, Changed, Fixed, Deprecated, Removed, Security.
+- Mark breaking changes explicitly with migration steps.
+- Every production deployment must publish release notes.
+- Release notes must include: user-facing changes, operational changes, breaking changes, and rollback instructions.
+- Tag each release note with risk level: low, medium, or high.
 
 ---
 

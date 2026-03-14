@@ -24,7 +24,7 @@
 | Database | PostgreSQL | Primary relational datastore |
 | ORM / query layer | Drizzle ORM | Type-safe schema + queries |
 | Auth | Auth.js | Provider adapters by project needs |
-| Hosting | Vercel + Fly.io | Vercel for web, Fly.io for stateful services/workers |
+| Hosting | Fly.io (yyz) or WHC VPS | Fly.io for standard tier, WHC VPS for strict sovereignty |
 | CI/CD | GitHub Actions | Required checks gate merge/deploy |
 
 **Deviations from personal defaults:** none
@@ -74,7 +74,7 @@ Required environment variables (never commit values):
 [TODO — list variable names and what they're for]
 ```
 
-Where to get them: [TODO — e.g. "ask team lead", "Doppler project X", "1Password vault Y"]
+Where to get them: [TODO — e.g. "ask team lead", "AWS Secrets Manager ca-central-1", "Infisical instance"]
 
 ---
 
@@ -114,6 +114,9 @@ The following require extra care or explicit approval before changing:
 **How to deploy to production:** [TODO — note if this requires manual approval]  
 **Rollback procedure:** [TODO]
 
+**Changelog policy:** [TODO — where changelog lives and who updates it at release time]  
+**Release note policy:** [TODO — where release notes are published and required sections]
+
 ---
 
 ## Team Context
@@ -135,4 +138,5 @@ Mark complete before granting full autonomy to agents:
 - [ ] Environment variable inventory is complete.
 - [ ] Sensitive areas and approval boundaries are explicit.
 - [ ] Deployment and rollback steps are tested in non-production.
+- [ ] Changelog and release-note process is defined.
 - [ ] Owners/reviewers are defined.
