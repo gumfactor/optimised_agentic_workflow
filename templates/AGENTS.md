@@ -118,3 +118,16 @@ The following require extra care or explicit approval before changing:
 **Primary reviewers:** [TODO]  
 **Slack / comms channel:** [TODO]  
 [Remove this section for solo projects]
+
+---
+
+## Autonomy Readiness Checklist
+
+Mark complete before granting full autonomy to agents:
+
+- [ ] Purpose and scope are complete.
+- [ ] Command block is fully filled and verified.
+- [ ] Environment variable inventory is complete.
+- [ ] Sensitive areas and approval boundaries are explicit.
+- [ ] Deployment and rollback steps are tested in non-production.
+- [ ] Owners/reviewers are defined.

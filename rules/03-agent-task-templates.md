@@ -122,3 +122,62 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 - Note what would change the recommendation
 
 Do not list every possible option. Make a call.
+
+---
+
+## Task: Incident Response
+
+**Trigger:** "incident", "outage", "sev1", "sev2", "production issue", "service down"
+
+**Steps:**
+
+1. Stabilize first: identify immediate mitigation actions that reduce user impact without risky rewrites.
+2. Declare incident context: scope, impacted users/systems, current severity, and current hypothesis.
+3. Establish timeline: first failure signal, key events, and mitigations attempted.
+4. Contain blast radius: disable non-essential side effects, pause risky deploys, and isolate failing components.
+5. Verify mitigation with evidence (metrics, logs, health checks).
+6. Open recovery plan with explicit owners and ETA.
+7. Produce post-incident summary: root cause, contributing factors, preventive actions, and follow-up tasks.
+
+**Stop and ask if:**
+- Mitigation requires production data deletion or irreversible operations.
+- Remediation requires changes outside workspace boundary.
+
+---
+
+## Task: Security Triage
+
+**Trigger:** "security", "vulnerability", "CVE", "auth bypass", "injection", "secret leak"
+
+**Steps:**
+
+1. Classify severity and exploitability (critical/high/medium/low) with concrete impact.
+2. Confirm exposure: affected versions, reachable surfaces, and whether production is impacted.
+3. Apply immediate containment if needed (revoke keys, disable endpoints, roll back vulnerable release).
+4. Implement smallest safe fix and add regression tests for the vulnerability class.
+5. Re-run security checks and dependency scans.
+6. Document disclosure details internally: what happened, who is impacted, what has been mitigated, and next deadlines.
+
+**Stop and ask if:**
+- Public disclosure timing or legal/compliance communication is required.
+- Fix requires emergency production action beyond approved autonomy boundaries.
+
+---
+
+## Task: Database Migration and Rollback
+
+**Trigger:** "migration", "schema change", "backfill", "drop column", "rollback migration"
+
+**Steps:**
+
+1. Define migration type: additive, backfill, destructive, or rollback.
+2. Write migration plan with preconditions, rollout steps, and rollback steps before executing.
+3. Validate migration on a production-like dataset in non-production first.
+4. Apply additive-first approach: deploy backward-compatible schema before application changes.
+5. Run verification queries and application smoke checks after each phase.
+6. Keep rollback path warm: known good artifact, reverse migration or compensating migration, and execution command.
+7. Document completion evidence and any residual risk.
+
+**Stop and ask if:**
+- Migration is destructive or irreversible.
+- Data correction affects financial, legal, or user-trust critical records.
