@@ -34,6 +34,7 @@ Load these files when starting any session where they are relevant:
 For repeatable setup across repositories, this kit also provides:
 - `bash scripts/install-kit.sh <target-repo-path>` for first-time bootstrap.
 - `bash scripts/sync-kit.sh <target-repo-path>` for updates to an existing repo.
+- `bash scripts/install-hooks.sh` (in the target repo) to wire up the pre-push compliance hook.
 - `kit/manifest.txt` as the canonical list of files distributed to target repos.
 
 ## Layer 1 vs Layer 2
