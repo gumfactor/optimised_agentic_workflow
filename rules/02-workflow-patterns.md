@@ -15,6 +15,7 @@ How I structure development work. Agents should follow these patterns unless the
 **Model:** GitHub Flow (short-lived branches off `main`)
 
 **Branch naming:**
+
 ```
 feat/<short-slug>
 fix/<short-slug>
@@ -23,11 +24,13 @@ spike/<short-slug>   ← exploratory, never merged directly
 ```
 
 **Rules:**
+
 - `main` is always deployable
 - Short-lived branches only — if a branch lives more than a few days, it should be broken into smaller pieces
 - Never force-push to `main` or shared branches without explicit approval
 
 **Commit cadence on active branches:**
+
 - On any day work is performed on a branch, make at least one meaningful commit.
 - No commit is required on inactive days.
 - Never create synthetic or empty commits just to satisfy cadence.
@@ -38,6 +41,7 @@ spike/<short-slug>   ← exploratory, never merged directly
 ## Commit Style
 
 **Format:** Conventional Commits  
+
 ```
 feat: add user invitation flow
 fix: correct token expiry calculation
@@ -45,6 +49,7 @@ chore: update dependencies
 ```
 
 **Rules:**
+
 - One logical change per commit
 - Commit message describes *what changed and why*, not *what files were touched*
 - Do not squash informative commit history without reason
@@ -57,6 +62,7 @@ chore: update dependencies
 ## Pull Request Pattern
 
 **Before opening a PR:**
+
 - Lint, type checks, and tests pass locally
 - Self-review: read the diff as if reviewing someone else's code
 - Description covers: what changed, why, and how to verify
@@ -67,6 +73,7 @@ chore: update dependencies
 **Merge strategy:** Squash merge (single clean commit to `main`)
 
 **Required status checks before merge:**
+
 - Policy compliance (`scripts/policy-lint.sh`)
 - Lint
 - Type check
@@ -75,14 +82,17 @@ chore: update dependencies
 - Security/dependency scan (if configured)
 
 **Approvals default:**
+
 - 1 approval required for standard changes.
 - 2 approvals required for security, schema, or public API contract changes.
 
 **Agent merge authority:**
+
 - Agents may open and update PRs.
 - Agents may not merge high-risk PRs without explicit human approval.
 
 **Solo-repository exception:**
+
 - In single-maintainer repositories, direct commits to `main` are allowed.
 - Even in solo mode, required checks still apply (`lint`, `typecheck`, `test`, `build` where available).
 - In solo mode, every production-affecting change must still update changelog/release-note artifacts.
@@ -124,11 +134,13 @@ These are opt-in workflows. They are active only when a project-level `AGENTS.md
 Use this mode when the agent should continuously validate and remediate during implementation.
 
 **Activation behavior:**
+
 - `manual-trigger`: run only when the user includes a configured trigger phrase in the request.
 - `always-on`: run by default for in-scope implementation tasks.
 - Recommended default: `manual-trigger`.
 
 **Activation prerequisites:**
+
 - Activation style and trigger phrases (if manual) are defined.
 - Approved validation commands are defined.
 - A remediation log path is defined.
@@ -136,6 +148,7 @@ Use this mode when the agent should continuously validate and remediate during i
 - Excluded paths and sensitive areas are explicit.
 
 **Operating sequence:**
+
 1. Establish validation checkpoints before editing: after scaffold, after each meaningful logic change, and before handoff.
 2. Run the narrowest relevant tests first: touched unit tests, nearest package/module tests, then wider suites only if the narrow checks pass.
 3. Append a remediation-log entry for each run with timestamp, command, result, hypothesis, and touched files.
@@ -144,6 +157,7 @@ Use this mode when the agent should continuously validate and remediate during i
 6. Stop only when the configured validation set is green or an escalation condition is triggered.
 
 **Escalation conditions:**
+
 - Same failure repeats twice with no meaningful signal improvement.
 - Fix would cross a public API, schema, dependency, or approval boundary.
 - Wider validation reveals unrelated failures outside allowed scope.
@@ -156,11 +170,13 @@ Use this mode when the agent should actively look for additional issues and fix 
 This is a gentle maintenance pass, not a feature-delivery mode.
 
 **Activation behavior:**
+
 - `manual-trigger`: run only when the user includes a configured trigger phrase in the request.
 - `always-on`: run by default for in-scope tasks after primary implementation validation is complete.
 - Recommended default: `manual-trigger`.
 
 **Activation prerequisites:**
+
 - Activation style and trigger phrases (if manual) are defined.
 - Approved search and validation commands are defined.
 - A hygiene issue log path is defined.
@@ -168,6 +184,7 @@ This is a gentle maintenance pass, not a feature-delivery mode.
 - Scope boundaries for opportunistic fixes are explicit.
 
 **Operating sequence:**
+
 1. Build an issue queue from objective signals only: failing tests, lint errors, type errors, static analysis findings, and documented TODO or FIXME markers if the project allows them.
 2. Limit scope to maintenance findings: security flaws, correctness bugs, reliability defects, rendering or character-encoding issues, accessibility regressions, and standards compliance issues.
 3. Rank findings by severity, user impact, and proximity to the current task.
@@ -177,6 +194,7 @@ This is a gentle maintenance pass, not a feature-delivery mode.
 7. End the sweep when no in-scope actionable issues remain or only approval-gated work is left.
 
 **Scope controls:**
+
 - Do not convert a feature task into a repo-wide cleanup.
 - Do not rewrite stable areas merely because improvements are possible.
 - Do not create or expand product features under hygiene mode.
@@ -187,6 +205,7 @@ This is a gentle maintenance pass, not a feature-delivery mode.
 ## When to Stop and Escalate
 
 Stop and surface to the developer when:
+
 - The root cause is ambiguous and multiple interpretations would lead to different solutions
 - The fix requires changing a public interface or shared contract
 - The change would affect more than one service or team's scope

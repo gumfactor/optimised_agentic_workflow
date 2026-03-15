@@ -3,6 +3,7 @@
 This repository is a reusable agent-governance and maintenance-automation kit.
 
 It is the source of truth for:
+
 - Layer 1 guidance documents (`AGENTS.md`, `rules/*.md`, `templates/AGENTS.md`)
 - Proactive hygiene automation (`scripts/proactive-hygiene.sh`, `.github/workflows/proactive-hygiene.yml`)
 - Installation and sync helpers (`scripts/install-kit.sh`, `scripts/sync-kit.sh`)
@@ -56,6 +57,7 @@ jobs:
 ```
 
 This means:
+
 - Workflow logic updates (steps, tools, patterns) are inherited by all target repos automatically on next run.
 - Only the hygiene script needs re-syncing when its logic changes.
 - Target repos control their own schedule and trigger settings in the caller file.

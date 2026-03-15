@@ -16,6 +16,7 @@
 [TODO — 2–3 sentence description of what this project does, who uses it, and what problem it solves]
 
 **Data sovereignty tier:** [TODO — choose one]
+
 - `standard` — Canadian data residency required (data stored in Canada; US-company managed services acceptable)
 - `strict` — Canadian ownership required (WHC VPS, AWS ca-central-1 only; no US-company managed services)
 
@@ -47,6 +48,7 @@
 ```
 
 Key areas:
+
 - `[TODO path]` — [what lives here]
 - `[TODO path]` — [what lives here]
 
@@ -90,6 +92,7 @@ Configure these only if you want agents to use them. Leave disabled otherwise.
 `[TODO — e.g. "self-heal on", "run self-healing", "heal as you go"]`
 
 **Approved commands:**
+
 ```bash
 [TODO — e.g. pnpm test -- --runInBand src/foo/*.test.ts]
 [TODO — e.g. pnpm lint src/foo --max-warnings=0]
@@ -117,6 +120,7 @@ Configure these only if you want agents to use them. Leave disabled otherwise.
 `[TODO — e.g. "hygiene sweep", "proactive fix pass", "find and fix nearby issues"]`
 
 **Approved search / validation commands:**
+
 ```bash
 [TODO — e.g. pnpm lint]
 [TODO — e.g. pnpm typecheck]
@@ -143,6 +147,7 @@ Configure these only if you want agents to use them. Leave disabled otherwise.
 ## Environment Setup
 
 Required environment variables (never commit values):
+
 ```
 [TODO — list variable names and what they're for]
 ```

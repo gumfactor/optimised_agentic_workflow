@@ -32,6 +32,7 @@ Load these files when starting any session where they are relevant:
 3. Reference this repo's rules as the Layer 1 baseline — override specific items in the project `AGENTS.md` where the project differs.
 
 For repeatable setup across repositories, this kit also provides:
+
 - `bash scripts/install-kit.sh <target-repo-path>` for first-time bootstrap.
 - `bash scripts/sync-kit.sh <target-repo-path>` for updates to an existing repo.
 - `bash scripts/install-hooks.sh` (in the target repo) to wire up the pre-push compliance hook.
@@ -49,12 +50,13 @@ Agents should treat Layer 2 as authoritative where it conflicts with Layer 1.
 This repository is guidance-first, so optional autonomy modes are configured for documentation maintenance workflows only.
 
 ### Self-Healing Validation Loop
+
 - Enabled: `yes`
 - Activation style: `manual-trigger`
 - Manual trigger phrases: `self-heal on`, `run self-healing`
 - Approved commands:
-	- `markdownlint "**/*.md"`
-	- `rg "Guidance version" AGENTS.md rules templates`
+ 	- `markdownlint "**/*.md"`
+ 	- `rg "Guidance version" AGENTS.md rules templates`
 - Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
 - Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
 - Remediation log path: `.agent/logs/self-healing.md`
@@ -63,13 +65,14 @@ This repository is guidance-first, so optional autonomy modes are configured for
 - Must escalate for: structural policy changes, changes affecting non-doc automation, any action outside workspace
 
 ### Proactive Hygiene Sweep
+
 - Enabled: `yes`
 - Activation style: `always-on`
 - Approved commands:
-	- `bash scripts/proactive-hygiene.sh`
-	- `markdownlint "**/*.md"`
-	- `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
-	- `rg "Guidance version" AGENTS.md rules templates`
+ 	- `bash scripts/proactive-hygiene.sh`
+ 	- `markdownlint "**/*.md"`
+ 	- `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
+ 	- `rg "Guidance version" AGENTS.md rules templates`
 - Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
 - Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
 - Issue log path: `.agent/logs/hygiene.md`

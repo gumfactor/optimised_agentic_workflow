@@ -24,6 +24,7 @@ Reusable invocation patterns for common task types. Use these as the expected sh
 6. Summarize what was built, what was intentionally excluded, and any open questions
 
 **Stop and ask if:**
+
 - Acceptance criteria are ambiguous
 - The feature requires a public API or schema change with downstream impact
 - No clear existing pattern exists and a new convention needs to be established
@@ -43,6 +44,7 @@ Reusable invocation patterns for common task types. Use these as the expected sh
 5. Confirm the fix doesn't break adjacent behavior
 
 **Stop and ask if:**
+
 - Root cause is unclear after investigation
 - The fix requires modifying a shared interface or cross-service contract
 
@@ -118,6 +120,7 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 7. Finish with a summary that separates what was fixed, what was deferred, and why the loop ended.
 
 **Stop and ask if:**
+
 - The mode is not fully configured at Layer 2.
 - The fix would cross a dependency, schema, public API, or sensitive-area boundary.
 - The same failure repeats without progress.
@@ -139,6 +142,7 @@ Do not pad the review with praise. Be direct. If something is fine, don't mentio
 7. End only when no actionable in-scope issues remain or the configured sweep budget is exhausted.
 
 **Stop and ask if:**
+
 - The remaining findings need approval or cross-team decisions.
 - The sweep starts expanding into broad refactors or policy changes.
 - The work would become net-new feature development or major feature expansion.
@@ -189,6 +193,7 @@ Do not list every possible option. Make a call.
 7. Produce post-incident summary: root cause, contributing factors, preventive actions, and follow-up tasks.
 
 **Stop and ask if:**
+
 - Mitigation requires production data deletion or irreversible operations.
 - Remediation requires changes outside workspace boundary.
 
@@ -208,6 +213,7 @@ Do not list every possible option. Make a call.
 6. Document disclosure details internally: what happened, who is impacted, what has been mitigated, and next deadlines.
 
 **Stop and ask if:**
+
 - Public disclosure timing or legal/compliance communication is required.
 - Fix requires emergency production action beyond approved autonomy boundaries.
 
@@ -228,5 +234,6 @@ Do not list every possible option. Make a call.
 7. Document completion evidence and any residual risk.
 
 **Stop and ask if:**
+
 - Migration is destructive or irreversible.
 - Data correction affects financial, legal, or user-trust critical records.

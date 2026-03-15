@@ -29,6 +29,7 @@ Rationale: single language, strong types, good tooling across the stack.
 **Forms:** React Hook Form + Zod
 
 Non-negotiables regardless of framework:
+
 - Validate all form input client-side before submission
 - Accessible by default — don't add ARIA as an afterthought
 - No inline styles except for truly dynamic values
@@ -45,11 +46,13 @@ Non-negotiables regardless of framework:
 **Auth:** Auth.js (with provider adapters as needed)
 
 Non-negotiables:
+
 - Validate at every external boundary — never trust input
 - Idempotency on operations that may be retried
 - Structured logging with correlation IDs
 
 **Auth decision policy:**
+
 - Default auth architecture: Auth.js + PostgreSQL session/account tables on the same project database.
 - For Canadian residency projects, run auth and database in Canada (Fly.io `yyz` or WHC VPS / ca-central-1 managed services).
 - Supabase is opt-in, not default. Use it only when a project explicitly needs bundled platform capabilities (auth + storage + realtime + instant APIs).
@@ -66,6 +69,7 @@ Non-negotiables:
 **Connection:** pooled via PgBouncer (or managed equivalent)
 
 Non-negotiables:
+
 - Migrations are version-controlled and deterministic
 - Rollback strategy documented for every destructive migration
 - No nullable columns without intentional reasoning
@@ -94,6 +98,7 @@ Non-negotiables:
 **CI/CD:** GitHub Actions (hosted runners are acceptable for CI; for strict sovereignty projects use self-hosted runners on WHC VPS)
 
 **Data residency policy:**
+
 - All projects default to Canadian data residency (data physically stored in Canada).
 - Projects flagged as strict sovereignty must also use Canadian-owned infrastructure (WHC VPS) and avoid US-company managed services where alternatives exist.
 - When starting a project, explicitly declare in its `AGENTS.md` whether it is standard (Canadian residency) or strict sovereignty (Canadian ownership required).
