@@ -2,8 +2,8 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
-- Last updated: `2026-03-14`
+- Guidance version: `1.2.0`
+- Last updated: `2026-03-15`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
 How I structure development work. Agents should follow these patterns unless the project `AGENTS.md` specifies otherwise.
@@ -67,6 +67,7 @@ chore: update dependencies
 **Merge strategy:** Squash merge (single clean commit to `main`)
 
 **Required status checks before merge:**
+- Policy compliance (`scripts/policy-lint.sh`)
 - Lint
 - Type check
 - Unit/integration tests

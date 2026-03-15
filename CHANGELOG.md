@@ -6,15 +6,19 @@ The format is based on Keep a Changelog and uses semantic versioning for guidanc
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-03-15
+
 ### Added
-- Repository runtime configuration now includes `Proactive Hygiene Sweep` with bounded sweep/logging controls.
-- Scheduled GitHub Actions workflow for proactive hygiene runs using `scripts/proactive-hygiene.sh` with auto-commit of maintenance-only fixes.
-- Template-kit manifest at `kit/manifest.txt` plus bootstrap/sync helpers (`scripts/install-kit.sh`, `scripts/sync-kit.sh`) for applying this baseline across repositories.
-- Reusable `workflow_call` workflow (`proactive-hygiene-reusable.yml`) so target repos inherit workflow logic updates automatically; caller template distributed via kit manifest.
+- Mandatory policy compliance script at `scripts/policy-lint.sh` to enforce required guidance files, metadata blocks, version alignment, and changelog/release policy anchors.
+- Reusable policy compliance workflow at `.github/workflows/policy-compliance-reusable.yml`.
+- Repository policy compliance workflow at `.github/workflows/policy-compliance.yml` running on pull requests and pushes to `main`.
+- Template workflow at `templates/workflows/policy-compliance.yml` for distribution to target repos.
 
 ### Changed
-- Refined `Proactive Hygiene Sweep` as maintenance-only hygiene work (security, bugs, reliability, rendering/character-encoding, accessibility, compliance) and explicitly disallowed net-new feature expansion under hygiene mode.
-- Updated repository runtime config so proactive hygiene runs as a bounded always-on background maintenance pass, while self-healing remains explicit-trigger only.
+- Elevated policy compliance to a mandatory CI gate in governance and workflow rules.
+- Added policy-compliance status check to required pre-merge checks.
+- Updated kit manifest and installer guidance to include compliance artifacts.
+- Bumped guidance documents to version `1.2.0` for additive compliance automation.
 
 ## [1.1.0] - 2026-03-14
 

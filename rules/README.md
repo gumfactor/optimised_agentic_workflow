@@ -2,8 +2,8 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
-- Last updated: `2026-03-14`
+- Guidance version: `1.2.0`
+- Last updated: `2026-03-15`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
 Personal Layer 1 rules for agent behavior. These are project-agnostic — they apply everywhere unless a project's `AGENTS.md` explicitly overrides them.

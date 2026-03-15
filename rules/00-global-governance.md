@@ -2,8 +2,8 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
-- Last updated: `2026-03-14`
+- Guidance version: `1.2.0`
+- Last updated: `2026-03-15`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
 ## Purpose
@@ -87,6 +87,7 @@ If any activation input is missing, agents must treat the mode as disabled.
 ## Policy Enforcement
 - Governance must be enforceable by checks, not only prose. If a policy can be tested, automate it.
 - Every repo must expose standard validation commands in `package.json` scripts (or language-equivalent): `lint`, `typecheck`, `test`, `build`.
+- Every repo must include and pass a mandatory policy-lint gate (`bash scripts/policy-lint.sh`) in CI.
 - CI must block merges when required checks fail.
 - Required checks for protected branches: lint, typecheck, unit/integration tests, and build.
 - If security scanning is available, it is required on pull requests and main branch merges.

@@ -2,8 +2,8 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
-- Last updated: `2026-03-14`
+- Guidance version: `1.2.0`
+- Last updated: `2026-03-15`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
 Personal technology defaults for new projects. These represent my actual preferences — not generic best practice. When a project's `AGENTS.md` specifies different choices, defer to that.

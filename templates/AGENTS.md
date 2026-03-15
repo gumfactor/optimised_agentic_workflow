@@ -4,10 +4,10 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
+- Guidance version: `1.2.0`
 - Last updated: `[TODO — YYYY-MM-DD]`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
-- Targets Layer 1 version: `[TODO — e.g. 1.1.0]`
+- Targets Layer 1 version: `[TODO — e.g. 1.2.0]`
 
 ---
 

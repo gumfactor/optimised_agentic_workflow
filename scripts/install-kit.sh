@@ -130,5 +130,6 @@ echo "- skipped: $skipped"
 echo
 echo "Next steps in target repo:"
 echo "1) Review AGENTS/rules for project-specific overrides."
-echo "2) Validate the hygiene script locally: bash scripts/proactive-hygiene.sh"
-echo "3) Commit the imported kit files."
+echo "2) Validate mandatory compliance locally: bash scripts/policy-lint.sh"
+echo "3) Validate hygiene script (optional): bash scripts/proactive-hygiene.sh"
+echo "4) Commit the imported kit files."

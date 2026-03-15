@@ -13,4 +13,6 @@ rules/02-workflow-patterns.md
 rules/03-agent-task-templates.md
 templates/AGENTS.md
 scripts/proactive-hygiene.sh
+scripts/policy-lint.sh
 templates/workflows/proactive-hygiene.yml:.github/workflows/proactive-hygiene.yml
+templates/workflows/policy-compliance.yml:.github/workflows/policy-compliance.yml

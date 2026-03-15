@@ -2,8 +2,8 @@
 
 ## Document Metadata
 
-- Guidance version: `1.1.0`
-- Last updated: `2026-03-14`
+- Guidance version: `1.2.0`
+- Last updated: `2026-03-15`
 - Versioning model: semantic versioning for guidance docs (`MAJOR.MINOR.PATCH`)
 
 This repository is **Layer 1** agent configuration — personal defaults, workflow patterns, and task templates that travel with me across all projects.

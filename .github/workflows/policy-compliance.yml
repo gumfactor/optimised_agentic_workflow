@@ -1,0 +1,19 @@
+name: Policy Compliance
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: policy-compliance-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  compliance:
+    uses: gumfactor/optimised_agentic_workflow/.github/workflows/policy-compliance-reusable.yml@main
