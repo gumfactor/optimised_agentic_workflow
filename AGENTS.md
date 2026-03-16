@@ -55,8 +55,8 @@ This repository is guidance-first, so optional autonomy modes are configured for
 - Activation style: `manual-trigger`
 - Manual trigger phrases: `self-heal on`, `run self-healing`
 - Approved commands:
- 	- `markdownlint "**/*.md"`
- 	- `rg "Guidance version" AGENTS.md rules templates`
+  - `markdownlint "**/*.md"`
+  - `rg "Guidance version" AGENTS.md rules templates`
 - Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
 - Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
 - Remediation log path: `.agent/logs/self-healing.md`
@@ -69,10 +69,10 @@ This repository is guidance-first, so optional autonomy modes are configured for
 - Enabled: `yes`
 - Activation style: `always-on`
 - Approved commands:
- 	- `bash scripts/proactive-hygiene.sh`
- 	- `markdownlint "**/*.md"`
- 	- `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
- 	- `rg "Guidance version" AGENTS.md rules templates`
+  - `bash scripts/proactive-hygiene.sh`
+  - `markdownlint "**/*.md"`
+  - `rg "TODO|FIXME" AGENTS.md rules templates CHANGELOG.md`
+  - `rg "Guidance version" AGENTS.md rules templates`
 - Scope: `AGENTS.md`, `rules/**/*.md`, `templates/**/*.md`, `CHANGELOG.md`
 - Excluded paths / sensitive areas: non-markdown files, git history rewrites, external systems
 - Issue log path: `.agent/logs/hygiene.md`

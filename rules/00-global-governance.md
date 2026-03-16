@@ -130,9 +130,9 @@ If any activation input is missing, agents must treat the mode as disabled.
 
 - All guidance documents in this repository and project repositories must declare a document version.
 - Versioning uses semantic versioning:
- 	- `PATCH`: wording/clarity updates with no behavioral policy change.
- 	- `MINOR`: additive policy updates that are backward compatible.
- 	- `MAJOR`: breaking policy changes requiring project behavior updates.
+  - `PATCH`: wording/clarity updates with no behavioral policy change.
+  - `MINOR`: additive policy updates that are backward compatible.
+  - `MAJOR`: breaking policy changes requiring project behavior updates.
 - Every guidance update must include a short change note in commit message body.
 - Major version changes must include an explicit migration note describing what projects must update.
 - Project-level `AGENTS.md` should record which Layer 1 guidance version it targets.
